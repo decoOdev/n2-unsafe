@@ -55,7 +55,7 @@ app.get('/login', (req, res) => {
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-  // ⚠️ Consulta completamente vulnerável a SQL Injection
+  // Consulta completamente vulnerável a SQL Injection
   const query = `
     SELECT * FROM users
     WHERE email = '${email}' AND password = '${password}'
