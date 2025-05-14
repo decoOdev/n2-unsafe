@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Usuários (Inseguro)</title>
+</head>
+<body>
+  <h1>Usuários Registrados</h1>
+
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Senha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%- user.username %></td> <!-- ⚠️ Vulnerável a XSS -->
+          <td><%= user.email %></td>
+          <td><%= user.password %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <p><a href="/register">← Registrar novo</a></p>
+</body>
+</html>
